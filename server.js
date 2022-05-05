@@ -1,7 +1,7 @@
 const express = require('express')
 const signale = require('signale')
 const api = require('./routes/api')
-const path = require('path');
+//const path = require('path');
 
 
 const PORT = process.env.PORT || 5500
@@ -14,10 +14,6 @@ app.use(express.json());
 
 //  -  ROUTES  -
 app.use('/api', api);
-
-app.get('/', (req, res)=>{
-    res.send('Hello from the server!')
-})
 
 
 app.listen(PORT, ()=>{
