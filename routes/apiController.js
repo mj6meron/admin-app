@@ -17,6 +17,7 @@ exports.login=(req, res)=>{
 
 exports.addUser=(req, res)=>{
  signale.pending('Admin is trying to add a user ...')
+ 
 }
 
 exports.deleteUser=(req, res)=>{
