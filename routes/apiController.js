@@ -13,10 +13,11 @@ const {
 // WELCOME AND LOGIN
 exports.welcome= async (req, res)=>{
     res.send('welcome here buddy')
+
 }
 
 exports.login= async (req, res)=>{
-    res.send('you trying to login as admin')
+    res.json('you trying to login as admin')
 }
 
 
@@ -25,29 +26,39 @@ exports.login= async (req, res)=>{
 exports.addUser= async (req, res)=>{
  signale.pending('Admin is trying to add a user ...')
 
+ const { error}= addUserValidation(req.body)
+
+
+if (!error){console.log('you have passed the validation')}else{console.log('validation failed')}
+ res.json({message: 'You want to add a user!!!', yourReq: req.body })
+
+
 }
 
 exports.deleteUser= async (req, res)=>{
     signale.pending('Admin is trying to delete a user ...')
 
-}
-
-exports.updateUser= async (req, res)=>{
-    signale.pending('Admin is trying to update a user ...')
+    res.json({message: 'Delete a user ?', YourReq: req.body})
 
 }
+
+
 
 // PRODUCTS APIs
 
 exports.addProduct= async (req, res)=>{
     signale.pending('Admin is trying to add a product ...')
 
+
+
+    res.json({message: 'Add a product?', YourReq: req.body})
+
 }
 
 exports.deleteProduct= async (req, res)=>{
     signale.pending('Admin is trying to delete a product ...')
     try {
-    const { error } = removeValidation(req.body);
+    const { error } = removePoductValidation(req.body);
         if (error) {
             signale.fatal("Remove input validation failed :(")
             return res.status(400).json({error: error.details[0].message});   // The message is form the joi object in validation.js
@@ -71,7 +82,12 @@ exports.deleteProduct= async (req, res)=>{
 
 }
 
+// UPDATE FUNCTIONALITITES TO BE IMPLEMENTED IN THE FUTURE
+
 exports.updateProduct= async (req, res)=>{
     signale.pending('Admin is trying to update a product ...')
+}
 
+exports.updateUser= async (req, res)=>{
+    signale.pending('Admin is trying to update a user ...')
 }

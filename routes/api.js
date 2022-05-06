@@ -10,7 +10,7 @@ router.post('/login', apiController.login);
 
 // USER ROUTES
 
-router.post('/addUser', verify, apiController.addUser);
+router.post('/addUser', apiController.addUser);
 router.delete('/deleteUser', verify, apiController.deleteUser);
 router.patch('/updateUser', verify, apiController.updateUser);
 
