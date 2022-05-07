@@ -1,23 +1,23 @@
-'use strict';
-const router = require('express').Router();
-const verify = require('./varifyToken');
-const apiController = require('./apiController.js');
-
-//ROUTES
-
-router.get('/welcome', apiController.welcome);
-router.post('/login', apiController.login);
-
+'use strict'
+const router = require('express').Router()
+const verify = require('./varifyToken')
+const userApi = require('./userApi.js')
+const productApi = require('./productApi.js')
+//----------------------------------------------------------------------------------
+//ROUTES - Home
+router.post('/login', userApi.login)
+//----------------------------------------------------------------------------------
 // USER ROUTES
-router.post('/addUser', apiController.addUser);
-router.post('/allUsers', apiController.allUsers);
-router.delete('/deleteUser', verify, apiController.deleteUser);
-router.patch('/updateUser', verify, apiController.updateUser);
-
+router.get('/allUsers', userApi.allUsers)
+router.post('/addUser', userApi.addUser)
+router.delete('/deleteUser', userApi.deleteUser)
+router.patch('/updateUser', verify, userApi.updateUser)   //  -- to be implemented later maybe
+//----------------------------------------------------------------------------------
 // PRODUCT ROUTES
-
-router.post('/addProduct', verify, apiController.addProduct);
-router.delete('/deleteProduct', verify, apiController.deleteProduct);
-router.patch('/updateProduct', verify, apiController.updateProduct);
+router.get('/allProducts', productApi.allProducts)
+router.post('/addProduct', productApi.addProduct)
+router.delete('/deleteProduct', productApi.deleteProduct)
+router.patch('/updateProduct', varify, productApi.updateProduct)   // -- to be implemented later maybe
+//----------------------------------------------------------------------------------
 
 module.exports = router;

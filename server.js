@@ -28,3 +28,4 @@ app.use('/api', api);
 app.listen(PORT, ()=>{
     signale.success(`Server is running on port: ${PORT}`)
 })
+

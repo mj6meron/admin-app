@@ -32,7 +32,8 @@ const addProductValidation = (data) => {
     title: Joi.string().min(2).required(),
     category: Joi.string().min(3).required(),
     cost: Joi.number().required(),
-    description: Joi.string().min(0)
+    description: Joi.string().min(0),
+    owner_id: Joi.string().required()
   });
   return schema.validate(data);
 }
