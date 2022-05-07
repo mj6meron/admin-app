@@ -40,6 +40,8 @@ exports.deleteUser= async (req, res)=>{
 
     res.json({message: 'Delete a user ?', YourReq: req.body})
 
+
+
 }
 
 
