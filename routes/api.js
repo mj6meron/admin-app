@@ -17,7 +17,7 @@ router.patch('/updateUser', verify, userApi.updateUser)   //  -- to be implement
 router.get('/allProducts', productApi.allProducts)
 router.post('/addProduct', productApi.addProduct)
 router.delete('/deleteProduct', productApi.deleteProduct)
-router.patch('/updateProduct', varify, productApi.updateProduct)   // -- to be implemented later maybe
+router.patch('/updateProduct', verify, productApi.updateProduct)   // -- to be implemented later maybe
 //----------------------------------------------------------------------------------
 
 module.exports = router;
