@@ -9,8 +9,8 @@ router.get('/welcome', apiController.welcome);
 router.post('/login', apiController.login);
 
 // USER ROUTES
-
 router.post('/addUser', apiController.addUser);
+router.post('/allUsers', apiController.allUsers);
 router.delete('/deleteUser', verify, apiController.deleteUser);
 router.patch('/updateUser', verify, apiController.updateUser);
 
