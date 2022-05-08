@@ -48,8 +48,10 @@ exports.login= async (req, res)=>{
 exports.allUsers = async(req, res) => {
     signale.pending('Admin is trying to get all users ...')
     try {
+        
         const mydata = await User.find({})
         signale.complete('A list of users sent to ADMIN !')
+        res.header("Access-Control-Allow-Origin", "*"); //for solving CORS Policy
         res.json({message: 'Here is a list of users', users: mydata})
     } catch (error) {
         signale.fatal('Something went wrong getting all users')
@@ -118,7 +120,9 @@ exports.deleteUser= async (req, res)=>{
     }
     try {
         await user.remove()
+        
         signale.complete('User removed!')
+        
         return res.status(400).json({message:`User of id ${id} succefully Removed!`})
         
     } catch (error) {

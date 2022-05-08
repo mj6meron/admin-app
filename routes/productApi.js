@@ -11,6 +11,7 @@ exports.allProducts=async(req, res)=>{
     try {
         const mydata = await Product.find({})
         signale.complete('A list of products sent to ADMIN !')
+        res.header("Access-Control-Allow-Origin", "*"); //for solving CORS Policy
         res.json({message: 'Here is a list of products', products: mydata})
     } catch (error) {
         signale.fatal('Something went wrong getting all products')

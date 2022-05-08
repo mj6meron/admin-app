@@ -3,7 +3,8 @@ import "./Dashbord.css";
 import Header from "../layouts/Header"
 import Footer from "../layouts/Footer";
 import UserAdmin from "./User/UserAdmin";
-//import FeaturedProducts from "../test/FeaturedProducts";
+import ProductAdmin from "./Product/ProductAdmin";
+
 
 
 
@@ -13,6 +14,7 @@ export default function Dashbord() {
       We are here in the dashbord!(for testing)
       <Header/>
       <UserAdmin/>
+      <ProductAdmin/>
       
       <Footer/>
     </div>

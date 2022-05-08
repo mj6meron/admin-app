@@ -7,7 +7,7 @@ const Footer = () => {
         
         <button><Link to="../dashbord/User/UserAdmin">Users Management</Link></button>
         <br />
-        <button><Link to="../dashbord/User/ProductAdmin">Products Management</Link></button>
+        <button><Link to="../dashbord/Product/ProductAdmin">Products Management</Link></button>
     </footer>
   )
 }
