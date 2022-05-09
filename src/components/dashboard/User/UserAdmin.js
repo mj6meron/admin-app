@@ -5,7 +5,8 @@ import {FaTimes, FaPen} from 'react-icons/fa'
 import AddUser from './AddUser';
 import Header from '../../layouts/Header';
 import Users from './Users';
-import oneUser from './oneUser';
+import AppLayout from '../../layouts/AppLayout';
+import './userStyle.scss'
 
 const UserAdmin = () => {
     
@@ -80,8 +81,15 @@ const addUser = async (user) => {
 }
 
 return (
-    <div>
+  <div id ='main-content'>
+  <div id='sidebar'>
+    <AppLayout />
+  </div>
+  
+    <div id='content'>
+     
       <Header onAdd ={()=> setShowAddUser(!showAddUser)} />
+      
       {showAddUser && <AddUser onAdd ={addUser}/>}
 
      
@@ -89,8 +97,7 @@ return (
       <h1>User Data:</h1>
       <div className='item-container'>
         {User.map((user, index) => (
-          <div className='card' key={index}>
-            
+          <div className='card' key={index}> 
             <h4>
                 {user.email}
             </h4>
@@ -98,8 +105,9 @@ return (
             <FaPen style={ {color:'green'} }/>
             <FaTimes style={ {color:'red'}} onClick={() => deleteUser(user._id)}/>
           </div>
-        ))}
-      </div>
+        ))}    
+    </div>
+    </div>
     </div>
   );
 };

@@ -4,12 +4,12 @@ import './sidebar.scss';
 
 const sidebarNavItems = [
     {
-        display: 'Login as Admin',
+        display: 'Logout',
         icon: <i className='bx bx-home'></i>,
         to: '/',
         section: 'login'
     },
-    {
+    /*{
         display: 'Getting Started',
         icon: <i className='bx bx-star'></i>,
         to: '/dashboard',
@@ -20,7 +20,7 @@ const sidebarNavItems = [
         icon: <i className='bx bx-calendar'></i>,
         to: '/dashboard/Product/ProductAdmin',
         section: 'statistics'
-    },
+    },*/
     {
         display: 'User',
         icon: <i className='bx bx-user'></i>,

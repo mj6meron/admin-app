@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {FaTimes, FaPen} from 'react-icons/fa'
+import AppLayout from '../../layouts/AppLayout';
+import './productStyle.scss'
 
 const ProductAdmin = () => {
     
@@ -33,7 +35,12 @@ const fetchProducts = () => {
 
 
 return (
-    <div>
+  <div id = 'main-container'>
+    <div id ='sidebar'>
+      <AppLayout />
+    </div>
+
+    <div id ='content'>
       <h1>Product Data:</h1>
       <div className='item-container'>
         {Product.map((product, index) => (
@@ -48,6 +55,7 @@ return (
             <FaTimes style={ {color:'red'}}/>
           </div>
         ))}
+    </div>
       </div>
     </div>
   );
