@@ -56,11 +56,23 @@ useEffect(() => {
 
   return (
     <div className="loginBox">
-      <form onSubmit={handleSubmit}>
-        <input type="email" placeholder="Email" onChange={updateEmail}  required/>
-        <input type="password" placeholder="Password" onChange={updatePassword}  required/>
-        <p>{errorMessage}</p>
-        <input type="submit" value="Login" />
+
+      <div className="header">
+        <img className="adminLogo" src="https://www.pngitem.com/pimgs/m/128-1280822_check-mark-box-clip-art-blue-admin-icon.png" alt="" />
+        <p className="adminP">Admin Login</p>
+      </div>
+
+      <form onSubmit={handleSubmit} className="loginForm">
+        <label className="label">
+          <p className="labelP">Email: </p><input className="inputLogin" type="email" placeholder="Email" onChange={updateEmail}  required/>
+        </label>
+        <label className="label">
+        <p className="labelP">Password: </p><input className="inputLogin" type="password" placeholder="Password" onChange={updatePassword}  required/>
+        </label>
+        <label className="submitLabel">
+          <p className="errorMessage">{errorMessage}</p>
+          <button className="buttonLogin" type="submit" >Login</button>
+        </label>
       </form>
     </div>
   )
