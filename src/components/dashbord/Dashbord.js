@@ -13,9 +13,7 @@ export default function Dashbord() {
     <div className="dashbordBox">
       We are here in the dashbord!(for testing)
       <Header/>
-      <UserAdmin/>
-      <ProductAdmin/>
-      
+   
       <Footer/>
     </div>
   )

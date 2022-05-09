@@ -2,9 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {FaTimes, FaPen} from 'react-icons/fa'
 
+import AddUser from './AddUser';
+import Header from '../../layouts/Header';
+import Users from './Users';
+import oneUser from './oneUser';
+
 const UserAdmin = () => {
     
 const [User, setUsers] = useState([]);
+const [showAddUser, setShowAddUser] = useState(false)
 
 const url = 'http://localhost:5500/api/allUsers';
 
@@ -31,6 +37,7 @@ const fetchUsers = () => {
 //delete a user
 const deleteUser= async (_id)=>{  
     await fetch('http://localhost:5500/api/deleteUser',{
+        mode: 'cors',
         method:'DELETE',
         headers: {
                 'Content-Type': 'application/json',
@@ -54,10 +61,31 @@ const deleteUser= async (_id)=>{
   
   }  
 //
+//Add Users
+const addUser = async (user) => {
+  
+  const res = await fetch('http://localhost:5500/api/addUser', {
+    
+    method: 'POST',
+    mode: 'cors',//solution for CORS policy???
+    headers:{
+     'Content-type': 'application/json'
+    },
+      body:JSON.stringify(user),
+})
 
+  const data =await res.json()
+
+  setUsers ([...Users, data])
+}
 
 return (
     <div>
+      <Header onAdd ={()=> setShowAddUser(!showAddUser)} />
+      {showAddUser && <AddUser onAdd ={addUser}/>}
+
+     
+      
       <h1>User Data:</h1>
       <div className='item-container'>
         {User.map((user, index) => (

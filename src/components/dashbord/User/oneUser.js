@@ -1,19 +1,19 @@
 import {FaTimes} from 'react-icons/fa'
 
 //for user management
-const Task = ({task, onDelete}) => {
+const oneUser = ({user, onDelete}) => {
   return (
     <div className = 'userBox'>
         <h3>
-            {task.text}   
+            {user.email}   
             <FaTimes style={ {color:'red'} }
-            onClick ={() => onDelete(task.id)}/>
+            onClick ={() => onDelete(user._id)}/>
         </h3> 
-        <p>{task.email}</p> 
+        <p>{user.password}</p> 
     </div>
   )
 }
 
 
 
-export default Task
+export default oneUser

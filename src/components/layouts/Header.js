@@ -8,15 +8,15 @@ const Header = ({title, onAdd}) => {
 
   return (
     <header className='header'>
-        <div><h1 style ={headingStyle}>
+        <h1 style ={headingStyle}>
             {title}
         </h1>
-        <Button Link to='../dashbord/' text ='HOME'/></div>
+       
         
-    {location.pathname === '../dashbord/User/UserAdmin' && (
+    
     <Button color = 'green' text = 'Add User' onClick={onAdd}/>
     
-    )}
+    
 
     {location.pathname === '../dashbord/Product/ProductAdmin' && (
     <Button color = 'green' text = 'Add Product' onClick={onAdd}/>

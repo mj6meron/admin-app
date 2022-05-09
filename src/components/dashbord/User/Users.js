@@ -1,12 +1,12 @@
-import User from './User'
+import oneUser from './oneUser'
 
 //for user management
-const Tasks = ({tasks, onDelete}) => {
+const Users = ({User, onDelete}) => {
 
   return (
     <>
-    {tasks.map((task, index)=> (
-        <User key = {index} userBox = {task}
+    {User.map((user, index)=> (
+        <oneUser key = {index} userBox = {user}
         onDelete = {onDelete}
         />
     
@@ -17,4 +17,4 @@ const Tasks = ({tasks, onDelete}) => {
 
 
 
-export default Tasks
+export default Users
