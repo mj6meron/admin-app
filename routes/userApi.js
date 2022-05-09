@@ -12,6 +12,7 @@ const {
 // LOGIN
 exports.login= async (req, res)=>{
     
+
     // Validate Admin
     const { error } = loginValidation(req.body);
     if (error) {
@@ -29,7 +30,7 @@ exports.login= async (req, res)=>{
     // If the isAdmin is true
     if (user.is_admin==false){
         signale.fatal(" Not Admin Email :( ")
-        return res.json({errorMessage: " Not Admin Email:( "})
+        return res.status(400).json({error: " Not Admin Email:( "})
     }
     
     // Password correct?
@@ -41,7 +42,7 @@ exports.login= async (req, res)=>{
     
     // Create and assign token
     const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET);
-    res.header('auth-token', token).json({token: token, redirect: 'dashbord'}); // attached token to the header
+    res.header('auth-token', token).json({token: token, redirect: 'dashboard'}); // attached token to the header
 }
 
 // USERS APIs
@@ -112,7 +113,7 @@ exports.deleteUser= async (req, res)=>{
         return res.status(400).json({errorMessage:`Object-Id format not right!`})
     }
     
-    //  If user is available to delete  
+    //  If user is available to delete
     const user = await User.findOne({ _id: id })
     if (!user){
         signale.fatal('User not found')
