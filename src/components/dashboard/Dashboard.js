@@ -8,10 +8,10 @@ import ProductAdmin from "./Product/ProductAdmin";
 
 
 
-export default function Dashbord() {
+export default function Dashboard() {
   return (
     <div className="dashboardBox">
-      We are here in the dashbord!(for testing)
+      We are here in the dashboard!(for testing)
       <Header/>
    
       <Footer/>

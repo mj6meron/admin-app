@@ -12,25 +12,25 @@ const sidebarNavItems = [
     {
         display: 'Getting Started',
         icon: <i className='bx bx-star'></i>,
-        to: '/dashbord',
+        to: '/dashboard',
         section: 'started'
     },
     {
         display: 'Statistics',
         icon: <i className='bx bx-calendar'></i>,
-        to: '/dashbord/Product/ProductAdmin',
+        to: '/dashboard/Product/ProductAdmin',
         section: 'statistics'
     },
     {
         display: 'User',
         icon: <i className='bx bx-user'></i>,
-        to: '/dashbord/User/UserAdmin',
+        to: '/dashboard/User/UserAdmin',
         section: 'user'
     },
     {
         display: 'Product',
         icon: <i className='bx bx-receipt'></i>,
-        to: '/dashbord/Product/ProductAdmin',
+        to: '/dashboard/Product/ProductAdmin',
         section: 'product'
     },
 ]

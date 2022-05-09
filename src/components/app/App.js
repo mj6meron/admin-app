@@ -3,9 +3,9 @@ import 'boxicons/css/boxicons.min.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from '../login/Login';
 import Test from '../test/Test';
-import Dashbord from '../dashbord/Dashbord';
-import UserAdmin from '../dashbord/User/UserAdmin';
-import ProductAdmin from '../dashbord/Product/ProductAdmin';
+import Dashboard from '../dashboard/Dashboard';
+import UserAdmin from '../dashboard/User/UserAdmin';
+import ProductAdmin from '../dashboard/Product/ProductAdmin';
 import AppLayout from '../layouts/AppLayout';
 
 function App() {
@@ -14,11 +14,11 @@ function App() {
         <Router className='appRouter'>
             <Routes className="boxes">
                 <Route path='/' element={<AppLayout />}>
-                <Route index element={<Dashbord/>} />
+                <Route index element={<Dashboard/>} />
                 <Route path="/" element={<Login/>}/>
-                <Route path="/dashbord" element={<Dashbord/>}/>
-                <Route path="/dashbord/User/UserAdmin" element={<UserAdmin/>}/>
-                <Route path="/dashbord/Product/ProductAdmin" element={<ProductAdmin/>}/>
+                <Route path="/dashboard" element={<Dashboard/>}/>
+                <Route path="/dashboard/User/UserAdmin" element={<UserAdmin/>}/>
+                <Route path="/dashboard/Product/ProductAdmin" element={<ProductAdmin/>}/>
                 <Route path="/test" element={<Test/>}/>
                 </Route>
             </Routes>
