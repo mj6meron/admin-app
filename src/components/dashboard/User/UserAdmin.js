@@ -8,12 +8,13 @@ import Users from './Users';
 import AppLayout from '../../layouts/AppLayout';
 import './userStyle.scss'
 
-const UserAdmin = () => {
+const UserAdmin = (props) => {
     
 const [User, setUsers] = useState([]);
 const [showAddUser, setShowAddUser] = useState(false)
 
 const url = 'http://localhost:5500/api/allUsers';
+const userStat = props.User
 
 useEffect(() => {
   fetchUsers();
@@ -98,6 +99,7 @@ return (
      
       
       <h1>User Data:</h1>
+      <h2>There is {User.length} users that registered in DataBase</h2>
       <div className='item-container'>
         {User.map((user, index) => (
           <div className='card' key={index}> 
