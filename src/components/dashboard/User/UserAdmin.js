@@ -28,6 +28,7 @@ const fetchUsers = () => {
     //fetchUsers(allUsers)
       console.log(res);
       setUsers(res.data.users);
+      
     })
     .catch((err) => {
       console.log(err);
@@ -77,7 +78,9 @@ const addUser = async (user) => {
 
   const data =await res.json()
 
-  setUsers ([...Users, data])
+  setUsers ([...User, data])
+  fetchUsers()
+  
 }
 
 return (

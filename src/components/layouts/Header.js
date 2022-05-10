@@ -13,12 +13,12 @@ const Header = ({title, onAdd}) => {
         </h1>
        
         
-    
+       
     <Button color = 'green' text = 'Add User' onClick={onAdd}/>
-    
+        
     
 
-    {location.pathname === '../dashbord/Product/ProductAdmin' && (
+    {location.pathname === '../dashboard/Product/ProductAdmin' && (
     <Button color = 'green' text = 'Add Product' onClick={onAdd}/>
     )}   
     </header>
