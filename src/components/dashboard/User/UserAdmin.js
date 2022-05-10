@@ -8,13 +8,13 @@ import Users from './Users';
 import AppLayout from '../../layouts/AppLayout';
 import './userStyle.scss'
 
-const UserAdmin = (props) => {
+const UserAdmin = () => {
     
 const [User, setUsers] = useState([]);
 const [showAddUser, setShowAddUser] = useState(false)
 
 const url = 'http://localhost:5500/api/allUsers';
-const userStat = props.User
+
 
 useEffect(() => {
   fetchUsers();
@@ -99,14 +99,15 @@ return (
      
       
       <h1>User Data:</h1>
-      <h2>There is {User.length} users that registered in DataBase</h2>
+      <h2>Statistics : {User.length} users that registered in DataBase</h2>
       <div className='item-container'>
         {User.map((user, index) => (
           <div className='card' key={index}> 
             <h4>
-                {user.email}
+                Email: {user.email}
             </h4>
-            <p style={{width: 200}}>{user.registration_date}</p>
+            <p style={{width: 200}}>Token: {user.password}</p>
+            <p style={{width: 290}}> Time: {user.registration_date}</p>
             <FaPen style={ {color:'green'} }/>
             <FaTimes style={ {color:'red'}} onClick={() => deleteUser(user._id)}/>
           </div>
