@@ -4,7 +4,6 @@ import {FaTimes, FaPen} from 'react-icons/fa'
 
 import AddUser from './AddUser';
 import Header from '../../layouts/Header';
-import Users from './Users';
 import AppLayout from '../../layouts/AppLayout';
 import './userStyle.scss'
 
@@ -55,13 +54,11 @@ const deleteUser= async (_id)=>{
     .then((result)=>{
       
         result.json().then((res)=>{
-        res.header("Access-Control-Allow-Origin", "*"); 
+        //res.header("Access-Control-Allow-Origin", "*"); //Cors Policy: wild
         console.log('Delete is working', _id);
         console.warn(res)
         })
     })
-
-  
   }  
 //
 //Add Users
@@ -70,7 +67,7 @@ const addUser = async (user) => {
   const res = await fetch('http://localhost:5500/api/addUser', {
     
     method: 'POST',
-    mode: 'cors',//solution for CORS policy???
+    mode: 'cors',
     headers:{
      'Content-type': 'application/json'
     },
@@ -108,6 +105,7 @@ return (
             </h4>
             <p style={{width: 200}}>Token: {user.password}</p>
             <p style={{width: 290}}> Time: {user.registration_date}</p>
+            
             <FaPen style={ {color:'green'} }/>
             <FaTimes style={ {color:'red'}} onClick={() => deleteUser(user._id)}/>
           </div>

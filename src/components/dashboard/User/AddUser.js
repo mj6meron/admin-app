@@ -4,6 +4,8 @@ import {useState} from 'react'
 const AddUser = ({onAdd}) => {
 const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
+//const [is_admin, setAdmin] = useState(false)
+
 
 const onSubmit = (e)=>{
     e.preventDefault()
@@ -16,6 +18,8 @@ const onSubmit = (e)=>{
 
     setEmail('')
     setPassword('')
+    //setAdmin(false)
+
 }
   return (
    <form className='add-form' onSubmit={onSubmit}>
@@ -31,6 +35,8 @@ const onSubmit = (e)=>{
            <input type="text" placeholder="Add Password" value={password} 
            onChange={(e) => setPassword(e.target.value)}/>
        </div>
+
+    
 
        <input type="submit" value='Add' className='btn btn-block'/>
 

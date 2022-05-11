@@ -83,7 +83,8 @@ exports.addUser= async (req, res)=>{
     // Create new User
     const user = new User({ 
         email: req.body.email,
-        password: hashPssword
+        password: hashPssword,
+        
     });
     try {
         const savedUser = await user.save()
