@@ -1,9 +1,10 @@
 h1 {
     text-align: center;
   }
+  
   .item-container {
-    display: flex;
-    justify-content: center;
+    display: flexbox;
+    justify-content: space-between;
     flex-wrap: wrap;
     gap: 2em;
   }

@@ -4,12 +4,12 @@ import {FaTimes, FaPen} from 'react-icons/fa'
 import AppLayout from '../../layouts/AppLayout';
 import './productStyle.scss'
 
-const ProductAdmin = (props) => {
+const ProductAdmin = () => {
     
 const [Product, setProducts] = useState([]);
 
 const url = 'http://localhost:5500/api/allProducts';
-const productStat = props.Product
+
 
 useEffect(() => {
   fetchProducts();

@@ -14,17 +14,26 @@
 
 #content {
 	display: table-cell;
-	width: 85%;
+	width: 65%;
 	vertical-align: top;
 	height: 2000px;
 	padding: 10px 0 0 10px;
 	
 }
+#item-container {
+	display: table-cell;
+	width: 400px;
+	height: 100px;
+}
 
 .card {
+	margin-left:15%;
+	margin-right:15%;
+	display: table-cell;
+	width: 85%;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 	transition: 0.3s;
-	width: 40%;
+	text-align: left;
   }
   
   .card:hover {

@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {FaTimes, FaPen} from 'react-icons/fa'
-
 import AddUser from './AddUser';
+import UpdateUser from './UpdateUser';
 import Header from '../../layouts/Header';
 import AppLayout from '../../layouts/AppLayout';
 import './userStyle.scss'
 
+
+
 const UserAdmin = () => {
     
 const [User, setUsers] = useState([]);
+
+
 const [showAddUser, setShowAddUser] = useState(false)
+const [showUpdateUser, setShowUpdateUser] = useState(false)
 
 const url = 'http://localhost:5500/api/allUsers';
 
@@ -60,7 +65,7 @@ const deleteUser= async (_id)=>{
         })
     })
   }  
-//
+
 //Add Users
 const addUser = async (user) => {
   
@@ -81,32 +86,44 @@ const addUser = async (user) => {
   
 }
 
+function openUpdate(_id) {
+  setShowUpdateUser(true);
+  setUsers((prevInput) => { //ref: l19 setUpdatedItem
+    return {
+      ...prevInput,
+      _id,
+    };
+  });
+}
+const updateUser = (_id) => {
+  axios.put("/api/updateUser/" + _id, UpdateUser.updatedUser);
+  alert("user updated");
+  console.log(`item with id ${_id} updated`);
+}
+
 return (
   <div id ='main-content'>
-  <div id='sidebar'>
-    <AppLayout />
-  </div>
-  
-    <div id='content'>
-     
-      <Header onAdd ={()=> setShowAddUser(!showAddUser)} />
-      
+  <div id='sidebar'><AppLayout /></div>
+  <div id='content'>
+     <Header onAdd ={()=> setShowAddUser(!showAddUser)} />
       {showAddUser && <AddUser onAdd ={addUser}/>}
+      {showUpdateUser && <UpdateUser onUpdate ={updateUser._id}/>}
 
-     
-      
       <h1>User Data:</h1>
+      
       <h2>Statistics : {User.length} users that registered in DataBase</h2>
       <div className='item-container'>
         {User.map((user, index) => (
-          <div className='card' key={index}> 
-            <h4>
-                Email: {user.email}
-            </h4>
-            <p style={{width: 200}}>Token: {user.password}</p>
-            <p style={{width: 290}}> Time: {user.registration_date}</p>
+          
+        <div className='card' key={index}> 
+
+            <h4>Email: {user.email}</h4><br/>
+            <p style={{width: 'fit-content'}}>HashPass: {user.password}</p>
+            <p style={{width: 'fit-content'}}>Time of Registration: {user.registration_date}</p>
             
-            <FaPen style={ {color:'green'} }/>
+            <FaPen style={ {color:'green'}} onClick={()=> setShowUpdateUser(!showUpdateUser)}/>
+           
+            
             <FaTimes style={ {color:'red'}} onClick={() => deleteUser(user._id)}/>
           </div>
         ))}    

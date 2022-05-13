@@ -1,4 +1,4 @@
-import {FaTimes} from 'react-icons/fa'
+/*import {FaTimes} from 'react-icons/fa'
 
 //for user management
 const oneUser = ({user, onDelete}) => {
@@ -16,4 +16,4 @@ const oneUser = ({user, onDelete}) => {
 
 
 
-export default oneUser
+export default oneUser*/

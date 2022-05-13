@@ -13,14 +13,11 @@ const onSubmit = (e)=>{
         alert('add new user')
         return
     }
-
     onAdd({email, password})
-
     setEmail('')
     setPassword('')
-    //setAdmin(false)
-
 }
+
   return (
    <form className='add-form' onSubmit={onSubmit}>
 

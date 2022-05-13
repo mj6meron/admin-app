@@ -1,4 +1,4 @@
-import oneUser from './oneUser'
+/*import oneUser from './oneUser'
 
 //for user management
 const Users = ({User, onDelete}) => {
@@ -17,4 +17,4 @@ const Users = ({User, onDelete}) => {
 
 
 
-export default Users
+export default Users*/
