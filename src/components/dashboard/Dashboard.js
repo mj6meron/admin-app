@@ -1,37 +1,59 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Dashboard.css";
+
+
+import "./dash.css";
 import Header from "../layouts/Header"
 import Footer from "../layouts/Footer";
+import Landing from "../landing/Landing";
 import UserAdmin from "./User/UserAdmin";
 import ProductAdmin from "./Product/ProductAdmin";
+
 import AppLayout from '../layouts/AppLayout';
 
 
 
 export default function Dashboard() {
+  const [landingShow, setLandingShow] = useState(true)
+  const [productsShow, setProductsShow] = useState(false)
+  const [usersShow, setUsersShow] = useState(false)
 
 
+  const allProducts =()=>{
+    setLandingShow(false)
+    setProductsShow(true)
+    setUsersShow(false)
+  }
 
+  const allUsers =()=>{
+    setLandingShow(false)
+    setProductsShow(false)
+    setUsersShow(true)
+  }
 
-  const allProducts =()=>{}
+  const logOut =()=>{
+    
+  }
 
-  const allUsers =()=>{}
-
-  const logOut =()=>{}
+  console.log('one render')
 
   return (
     <div className="dashboardBox">
-      Hey, Welcome to the admin page!
 
 
 
-      <div>
-      <button onClick={allProducts}>All Products</button>
-      <button onClick={allUsers}>All Users</button>
-      <button  onClick={logOut}>Log out</button>
+      <div className="adminNavBar">
+      <button className="barCell"  onClick={allProducts}>All Products</button>
+      <button className="barCell"  onClick={allUsers}>All Users</button>
+      <button className="barCell"  onClick={logOut}>Log out</button>
       </div>
-      
-      <ProductAdmin />
+      <hr/>
+
+      <div className="dashboardBody">
+      {landingShow  && <Landing/>}
+      {usersShow  && <UserAdmin/>}
+      {productsShow  && <ProductAdmin/>}
+      </div>
       
       
     </div>

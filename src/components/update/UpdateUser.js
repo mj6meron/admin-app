@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-export default function UpdateUser(props) {
+import {useLocation} from 'react-router-dom';
+export default function UpdateUser() {
+  const location = useLocation();
   let navigate = useNavigate();
   let [email, setUsername] = useState("");
   let [password, setPassword] = useState("");
@@ -9,10 +11,10 @@ export default function UpdateUser(props) {
   let [errorMessage, setErrorMessage] = useState("");
 
   let user = {
-    user_id: "627fb4d7148b6c729edfcbad",
-    email: "MikeOldEmail@gmail.com",
+    user_id: location.state.user._id,
+    email: location.state.user.email,
     password: "Enter new password",
-    isAdmin: false,
+    isAdmin: location.state.user.is_admin,
   };
 
   const handleIsAdmin = (choice) => {
@@ -23,9 +25,9 @@ export default function UpdateUser(props) {
   }
 
 
+  
 
 
-  console.log('Here we have the id -> ', props)
   const prepareUpdate=()=>{
     if (email && password && isAdmin){return {email, password, is_admin: handleIsAdmin(isAdmin) }}
     if (!email && !password && !isAdmin) {setErrorMessage('You need to input at least one entry for update')}
@@ -81,11 +83,14 @@ export default function UpdateUser(props) {
 
   return (
     <div className="loginBox">
+      <br/><hr/>
       <div className="header">
-
-      <input className="buttonLogin" onClick={handleBack} value="Back to dashboard" />
+        <br/><br/>
+      <button className="buttonLogin" onClick={handleBack}>Back</button>
         <p className="adminP">Update User</p>
+        <br/><br/>
       </div>
+      <hr/><br/>
       <form onSubmit={handleSubmit} className="loginForm">
         <label className="label">
           <p className="labelP"> Email - </p>
@@ -114,7 +119,7 @@ export default function UpdateUser(props) {
         </label>
         <label className="submitLabel">
           <p className="errorMessage">{errorMessage}</p>
-          <input className="buttonLogin" type="submit" value="Update" />
+          <button className="buttonLogin" type="submit">Update</button>
         </label>
       </form>
     </div>

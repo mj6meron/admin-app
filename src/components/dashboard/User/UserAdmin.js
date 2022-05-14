@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { useNavigate } from "react-router-dom";
+
 import axios from 'axios';
 import {FaTimes, FaPen} from 'react-icons/fa'
 import AddUser from './AddUser';
@@ -91,17 +92,21 @@ const addUser = async (user) => {
   
 }
 
-function openUpdate(_id) {
+function openUpdate(currentUser) {
   setShowUpdateUser(true);
-  console.log(_id)
+  console.log(currentUser)
   setUsers((prevInput) => { //ref: l19 setUpdatedItem
     return {
       ...prevInput,
-      _id,
+      _id: currentUser,
     
     };
   });
-  navigate('/updateUser')
+  navigate('/updateUser',{
+    state: {
+      user: currentUser,
+    }
+  })
 }
 
 
@@ -116,13 +121,12 @@ if (!localStorage.getItem('auth-token')){
 
 return (
   <div id ='main-content'>
-  <div id='sidebar'><AppLayout /></div>
   <div id='content'>
      <Header onAdd ={()=> setShowAddUser(!showAddUser)} />
       {showAddUser && <AddUser onAdd ={addUser}/>}
       
 
-      <h1>User Data:</h1>
+      <h1>Users Data:</h1>
       
       <h2>Statistics : {User.length} users that registered in DataBase</h2>
       <div className='item-container'>
@@ -134,7 +138,7 @@ return (
             <p style={{width: 'fit-content'}}>HashPass: {user.password}</p>
             <p style={{width: 'fit-content'}}>Time of Registration: {user.registration_date}</p>
             
-            <FaPen style={ {color:'green'}} onClick={()=>openUpdate(user._id)}/>
+            <FaPen style={ {color:'green'}} onClick={()=>openUpdate(user)}/>
            
             
             <FaTimes style={ {color:'red'}} onClick={() => deleteUser(user._id)}/>

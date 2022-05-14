@@ -43,9 +43,6 @@ if (!localStorage.getItem('auth-token')){
 
 return (
   <div id = 'main-container'>
-    <div id ='sidebar'>
-      <AppLayout />
-    </div>
 
     <div id ='content'>
       <h1>Product Data:</h1>
