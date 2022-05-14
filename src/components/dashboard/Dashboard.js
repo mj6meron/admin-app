@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {useNavigate} from 'react-router-dom'
 import "./Dashboard.css";
 
 
@@ -14,6 +15,7 @@ import AppLayout from '../layouts/AppLayout';
 
 
 export default function Dashboard() {
+  let navigate = useNavigate()
   const [landingShow, setLandingShow] = useState(true)
   const [productsShow, setProductsShow] = useState(false)
   const [usersShow, setUsersShow] = useState(false)
@@ -32,6 +34,8 @@ export default function Dashboard() {
   }
 
   const logOut =()=>{
+    localStorage.clear()
+    navigate('/')
     
   }
 

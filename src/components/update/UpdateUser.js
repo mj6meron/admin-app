@@ -78,7 +78,7 @@ export default function UpdateUser() {
  */
 
  const handleBack =()=>{
-   navigate('/dashboard/User/UserAdmin')
+   navigate('/dashboard')
  }
 
   return (
