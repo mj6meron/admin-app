@@ -4,6 +4,7 @@ import Login from '../login/Login';
 import Test from '../test/Test';
 import Dashboard from '../dashboard/Dashboard';
 import UserAdmin from '../dashboard/User/UserAdmin';
+import UpdateUser from '../update/UpdateUser'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
                 <Route path="/dashboard" element={<Dashboard/>}/>
                 <Route path="/dashbord/User/UserAdmin" element={<UserAdmin/>}/>
                 <Route path="/test" element={<Test/>}/>
+                <Route path="/updateuser" element={<UpdateUser/>}/>
             </Routes>
         </Router>    
     </div>
