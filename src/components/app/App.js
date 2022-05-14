@@ -7,6 +7,7 @@ import Dashboard from '../dashboard/Dashboard';
 import UserAdmin from '../dashboard/User/UserAdmin';
 import ProductAdmin from '../dashboard/Product/ProductAdmin';
 import AppLayout from '../layouts/AppLayout';
+import UpdateUser from '../update/UpdateUser'
 function App() {
   return (
     <div className="App">
@@ -19,7 +20,7 @@ function App() {
                 <Route path="/dashboard/User/UserAdmin" element={<UserAdmin/>}/>
                 <Route path="/dashboard/Product/ProductAdmin" element={<ProductAdmin/>}/>
                 <Route path="/test" element={<Test/>}/>
-                
+                <Route path="/updateuser" element={<UpdateUser/>}/>
             </Routes>
         </Router>    
     </div>

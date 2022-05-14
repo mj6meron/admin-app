@@ -22,6 +22,7 @@ app.use(cors()) // Use this after the variable declaration
 dotenv.config()
 
 
+
 // Connect to mongoDB database
 connectDatabase();
 
