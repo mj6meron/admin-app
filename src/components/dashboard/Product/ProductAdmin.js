@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {FaTimes, FaPen} from 'react-icons/fa'
 import AppLayout from '../../layouts/AppLayout';
+import AccessDenied from '../../accessDenied/AccessDenied';
 import './productStyle.scss'
 
 const ProductAdmin = () => {
@@ -18,7 +19,11 @@ useEffect(() => {
 //show users
 const fetchProducts = () => {
   axios
-    .get(`${url}`)
+    .get(`${url}`,{
+      headers: {
+        'auth-token': localStorage.getItem('auth-token')
+      }
+    })
     .then((res) => {
   
       console.log(res);
@@ -30,10 +35,11 @@ const fetchProducts = () => {
     
 };
 
-//delete a user
-
-//
-
+if (!localStorage.getItem('auth-token')){
+  return(
+     <AccessDenied/>
+  )
+}
 
 return (
   <div id = 'main-container'>

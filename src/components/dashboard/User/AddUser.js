@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import AccessDenied from '../../accessDenied/AccessDenied';
 
 
 const AddUser = ({onAdd}) => {
@@ -18,7 +19,9 @@ const onSubmit = (e)=>{
     setPassword('')
 }
 
-  return (
+
+
+return (
    <form className='add-form' onSubmit={onSubmit}>
 
        <div className='form-control'>

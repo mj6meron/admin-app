@@ -8,16 +8,16 @@ const productApi = require("./productApi.js")
 router.post("/login", userApi.login)
 //----------------------------------------------------------------------------------
 // USER ROUTES
-router.get("/allUsers", userApi.allUsers)
-router.post("/addUser", userApi.addUser)
-router.delete("/deleteUser", userApi.deleteUser)
-router.patch("/updateUser", userApi.updateUser) //  -- to be implemented later maybe
+router.get("/allUsers", verify, userApi.allUsers)
+router.post("/addUser", verify, userApi.addUser)
+router.delete("/deleteUser", verify, userApi.deleteUser)
+router.patch("/updateUser",  verify,userApi.updateUser) 
 //----------------------------------------------------------------------------------
 // PRODUCT ROUTES
-router.get("/allProducts", productApi.allProducts)
-router.post("/addProduct", productApi.addProduct)
-router.delete("/deleteProduct", productApi.deleteProduct)
-router.patch("/updateProduct", verify, productApi.updateProduct) // -- to be implemented later maybe
+router.get("/allProducts",  verify,productApi.allProducts)
+router.post("/addProduct", verify, productApi.addProduct)
+router.delete("/deleteProduct", verify, productApi.deleteProduct)
+router.patch("/updateProduct", verify, productApi.updateProduct) 
 //----------------------------------------------------------------------------------
 
 module.exports = router;

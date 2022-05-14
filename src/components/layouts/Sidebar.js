@@ -6,8 +6,8 @@ const sidebarNavItems = [
     {
         display: 'Logout',
         icon: <i className='bx bx-home'></i>,
-        to: '/',
-        section: 'login'
+        to: '/logout',
+        section: 'logout'
     },
     /*{
         display: 'Getting Started',

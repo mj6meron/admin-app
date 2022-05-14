@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-export default function UpdateUser() {
+export default function UpdateUser(props) {
   let navigate = useNavigate();
   let [email, setUsername] = useState("");
   let [password, setPassword] = useState("");
@@ -9,7 +9,7 @@ export default function UpdateUser() {
   let [errorMessage, setErrorMessage] = useState("");
 
   let user = {
-    user_id: "6275939dbb13ccccc9a9147a",
+    user_id: "627fb4d7148b6c729edfcbad",
     email: "MikeOldEmail@gmail.com",
     password: "Enter new password",
     isAdmin: false,
@@ -22,6 +22,10 @@ export default function UpdateUser() {
     return false;
   }
 
+
+
+
+  console.log('Here we have the id -> ', props)
   const prepareUpdate=()=>{
     if (email && password && isAdmin){return {email, password, is_admin: handleIsAdmin(isAdmin) }}
     if (!email && !password && !isAdmin) {setErrorMessage('You need to input at least one entry for update')}
@@ -71,9 +75,15 @@ export default function UpdateUser() {
  }
  */
 
+ const handleBack =()=>{
+   navigate('/dashboard/User/UserAdmin')
+ }
+
   return (
     <div className="loginBox">
       <div className="header">
+
+      <input className="buttonLogin" onClick={handleBack} value="Back to dashboard" />
         <p className="adminP">Update User</p>
       </div>
       <form onSubmit={handleSubmit} className="loginForm">

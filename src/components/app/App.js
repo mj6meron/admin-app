@@ -8,6 +8,7 @@ import UserAdmin from '../dashboard/User/UserAdmin';
 import ProductAdmin from '../dashboard/Product/ProductAdmin';
 import AppLayout from '../layouts/AppLayout';
 import UpdateUser from '../update/UpdateUser'
+import LogOut from '../logout/LogOut'
 function App() {
   return (
     <div className="App">
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/dashboard/Product/ProductAdmin" element={<ProductAdmin/>}/>
                 <Route path="/test" element={<Test/>}/>
                 <Route path="/updateuser" element={<UpdateUser/>}/>
+                <Route path="/logout" element={<LogOut/>}/>
             </Routes>
         </Router>    
     </div>

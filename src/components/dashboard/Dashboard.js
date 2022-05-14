@@ -9,11 +9,29 @@ import AppLayout from '../layouts/AppLayout';
 
 
 export default function Dashboard() {
+
+
+
+
+  const allProducts =()=>{}
+
+  const allUsers =()=>{}
+
+  const logOut =()=>{}
+
   return (
     <div className="dashboardBox">
-      We are here in the dashboard!(for testing)
+      Hey, Welcome to the admin page!
+
+
+
+      <div>
+      <button onClick={allProducts}>All Products</button>
+      <button onClick={allUsers}>All Users</button>
+      <button  onClick={logOut}>Log out</button>
+      </div>
       
-      <AppLayout />
+      <ProductAdmin />
       
       
     </div>

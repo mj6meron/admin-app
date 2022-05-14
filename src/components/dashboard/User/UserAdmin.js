@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import {FaTimes, FaPen} from 'react-icons/fa'
 import AddUser from './AddUser';
 import UpdateUser from './UpdateUser';
 import Header from '../../layouts/Header';
 import AppLayout from '../../layouts/AppLayout';
+import AccessDenied from '../../accessDenied/AccessDenied';
 import './userStyle.scss'
 
 
 
 const UserAdmin = () => {
+
+
+const navigate = useNavigate()
     
 const [User, setUsers] = useState([]);
 
@@ -27,7 +32,11 @@ useEffect(() => {
 //show users
 const fetchUsers = () => {
   axios
-    .get(`${url}`)
+    .get(`${url}`,{
+      headers: {
+        'auth-token': localStorage.getItem('auth-token')
+      }
+    })
     .then((res) => {
     //const allUsers = res.data.users;
     //fetchUsers(allUsers)
@@ -43,27 +52,22 @@ const fetchUsers = () => {
 
 //delete a user
 const deleteUser= async (_id)=>{  
-    await fetch('http://localhost:5500/api/deleteUser',{
-        mode: 'cors',
-        method:'DELETE',
-        headers: {
-                'Content-Type': 'application/json',
-                'auth-token': localStorage.getItem('auth-token')
-            },
-        body: JSON.stringify({"user_id": _id})
-      
+
+    axios.delete("http://localhost:5500/api/deleteUser", {
+      headers: {
+        'auth-token': localStorage.getItem('auth-token')
+      },
+      data: {
+        "user_id": _id
+      }
     })
-    console.log('Delete is working', _id)
+    .then((response) => {
+      console.log("here res -> ", response.data);
+    })
+    .catch(function (error) {
+      if (error)console.log(error.response.data.error);
+    });
     setUsers(User.filter((user)=>user._id !==_id))
-    
-    .then((result)=>{
-      
-        result.json().then((res)=>{
-        //res.header("Access-Control-Allow-Origin", "*"); //Cors Policy: wild
-        console.log('Delete is working', _id);
-        console.warn(res)
-        })
-    })
   }  
 
 //Add Users
@@ -74,7 +78,8 @@ const addUser = async (user) => {
     method: 'POST',
     mode: 'cors',
     headers:{
-     'Content-type': 'application/json'
+     'Content-type': 'application/json',
+     'auth-token': localStorage.getItem('auth-token')
     },
       body:JSON.stringify(user),
 })
@@ -88,17 +93,25 @@ const addUser = async (user) => {
 
 function openUpdate(_id) {
   setShowUpdateUser(true);
+  console.log(_id)
   setUsers((prevInput) => { //ref: l19 setUpdatedItem
     return {
       ...prevInput,
       _id,
+    
     };
   });
+  navigate('/updateUser')
 }
-const updateUser = (_id) => {
-  axios.put("/api/updateUser/" + _id, UpdateUser.updatedUser);
-  alert("user updated");
-  console.log(`item with id ${_id} updated`);
+
+
+
+
+
+if (!localStorage.getItem('auth-token')){
+  return(
+     <AccessDenied/>
+  )
 }
 
 return (
@@ -107,7 +120,7 @@ return (
   <div id='content'>
      <Header onAdd ={()=> setShowAddUser(!showAddUser)} />
       {showAddUser && <AddUser onAdd ={addUser}/>}
-      {showUpdateUser && <UpdateUser onUpdate ={updateUser._id}/>}
+      
 
       <h1>User Data:</h1>
       
@@ -121,7 +134,7 @@ return (
             <p style={{width: 'fit-content'}}>HashPass: {user.password}</p>
             <p style={{width: 'fit-content'}}>Time of Registration: {user.registration_date}</p>
             
-            <FaPen style={ {color:'green'}} onClick={()=> setShowUpdateUser(!showUpdateUser)}/>
+            <FaPen style={ {color:'green'}} onClick={()=>openUpdate(user._id)}/>
            
             
             <FaTimes style={ {color:'red'}} onClick={() => deleteUser(user._id)}/>

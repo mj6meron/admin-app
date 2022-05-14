@@ -101,6 +101,8 @@ exports.deleteUser = async (req, res) => {
     return res.status(400).json({ error: error.details[0].message }); // The message is form the joi object in validation.js
   }
 
+  console.log('here is the req.body -> ', req.body)
+
   // Storing the ID to be deleted
   const id = req.body.user_id;
   signale.info("id -> " + id);
@@ -148,6 +150,13 @@ exports.updateUser = async (req, res) => {
     return res.status(400).json({ error: error.details[0].message }); // The message is form the joi object in validation.js
   }
 
+if (req.body.password){
+      // Hash Password
+      const salt = await bcrypt.genSalt(10);
+      const hashPssword = await bcrypt.hash(req.body.password, salt);
+      req.body.password = hashPssword
+}
+
     const user = await User.findById(req.body.user_id)
     Object.assign(user, req.body)
     await user.save()
@@ -155,6 +164,7 @@ exports.updateUser = async (req, res) => {
     signale.complete("Admin updated a user");
     res.send({message: 'user updated!', data : user})
 } catch (error) {
+  console.log('here is the errrorrrr -> ', error)
     signale.fatal("Something went wrong!");
     res.status(404).json({error: "Something went wrong, Please try again!"})
 }
