@@ -1,11 +1,8 @@
 import {useState} from 'react'
-import AccessDenied from '../../accessDenied/AccessDenied';
-
 
 const AddUser = ({onAdd}) => {
 const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
-//const [is_admin, setAdmin] = useState(false)
 
 
 const onSubmit = (e)=>{
@@ -18,8 +15,6 @@ const onSubmit = (e)=>{
     setEmail('')
     setPassword('')
 }
-
-
 
 return (
    <form className='add-form' onSubmit={onSubmit}>
@@ -35,8 +30,6 @@ return (
            <input type="text" placeholder="Add Password" value={password} 
            onChange={(e) => setPassword(e.target.value)}/>
        </div>
-
-    
 
        <input type="submit" value='Add' className='btn btn-block'/>
 

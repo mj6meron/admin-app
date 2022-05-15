@@ -3,8 +3,6 @@ import Button from './Button'
 import './layout.css'
 
 const Header = ({title, onAdd}) => {
-//onAdd is showAddTask function
-    
 
   return (
     <header className='header'>

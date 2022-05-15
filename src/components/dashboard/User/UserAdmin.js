@@ -4,9 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import {FaTimes, FaPen} from 'react-icons/fa'
 import AddUser from './AddUser';
-import UpdateUser from './UpdateUser';
 import Header from '../../layouts/Header';
-import AppLayout from '../../layouts/AppLayout';
 import AccessDenied from '../../accessDenied/AccessDenied';
 import './userStyle.scss'
 
