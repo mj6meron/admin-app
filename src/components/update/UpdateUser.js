@@ -24,10 +24,7 @@ export default function UpdateUser() {
       return true;
     }
     return false;
-  }
-
-
-  
+  }  
 
 
   const prepareUpdate=()=>{
@@ -118,7 +115,7 @@ export default function UpdateUser() {
           <input
             className="inputLogin"
             type="password"
-            minlength="5"
+            minLength="5"
             placeholder={user.password}
             onChange={updatePassword}
           />
