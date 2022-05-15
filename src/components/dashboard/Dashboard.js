@@ -43,7 +43,6 @@ export default function Dashboard() {
     return (<AccessDenied/>)
   }
 
-
   return (
     <div className="dashboardBox">
 
