@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {FaTimes, FaPen} from 'react-icons/fa'
-import AppLayout from '../../layouts/AppLayout';
 import AccessDenied from '../../accessDenied/AccessDenied';
 import './productStyle.scss'
 
@@ -50,13 +49,9 @@ return (
       <div className='item-container'>
         {Product.map((product, index) => (
           <div className='card' key={index}>
- 
             <h4>Production:  {product.title}</h4>
             <p>Price:  {product.cost}</p>
             <p style={{width: 280}}>Description: {product.description}</p>
-            
-            <FaPen style={ {color:'green'} }/>
-            <FaTimes style={ {color:'red'}}/>
           </div>
         ))}
     </div>
