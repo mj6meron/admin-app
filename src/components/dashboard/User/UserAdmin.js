@@ -125,9 +125,6 @@ return (
      <Header onAdd ={()=> setShowAddUser(!showAddUser)} />
       {showAddUser && <AddUser onAdd ={addUser}/>}
       
-
-      <h1>Users Data:</h1>
-      
       <h2>Statistics : {User.length} users that registered in DataBase</h2>
       <div className='item-container'>
         {User.map((user, index) => (

@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from './Button'
+import './layout.css'
 
 const Header = ({title, onAdd}) => {
 //onAdd is showAddTask function
@@ -7,7 +8,7 @@ const Header = ({title, onAdd}) => {
 
   return (
     <header className='header'>
-        <h1 style ={headingStyle}>
+        <h1 className='header-title'>
             {title}
         </h1>
      <Button color = 'green' text = 'Add User' onClick={onAdd}/>
@@ -15,13 +16,9 @@ const Header = ({title, onAdd}) => {
   )
 }
 
-const headingStyle ={
-    color: 'blue',
-    backgroundColor: 'yellow'
-}
 
 Header.defaultProps ={
-    title:'DashBoard for Admin'
+    title:'User Administration'
 }
 
 export default Header

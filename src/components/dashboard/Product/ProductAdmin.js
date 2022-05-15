@@ -45,7 +45,7 @@ return (
   <div id = 'main-container'>
 
     <div id ='content'>
-      <h1>Product Data:</h1>
+      <h1 className='header-title'>Product Data:</h1>
       <h2>Statistics: {Product.length} products that registered in DataBase</h2>
       <div className='item-container'>
         {Product.map((product, index) => (
