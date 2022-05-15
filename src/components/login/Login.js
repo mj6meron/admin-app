@@ -14,7 +14,7 @@ export default function Login() {
     console.log("token check", localStorage.getItem("auth"));
     console.log(`Here is the email: ${email}, and password: ${password}`);
     axios
-      .post("http://localhost:5500/api/login", {
+      .post("/api/login", {
         email: email,
         password: password,
       })
@@ -26,19 +26,8 @@ export default function Login() {
       .catch(function (error) {
         setErrorMessage(error.response.data.error);
       });
-    //navigate('/dashboard')
+    if (!errorMessage){navigate('/dashboard')}
   }
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:5500/api/allProducts")
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
 
   function updateEmail(event) {
     setUsername(event.target.value);

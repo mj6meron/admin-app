@@ -72,7 +72,7 @@ exports.deleteProduct = async (req, res) => {
       signale.fatal("Product does not exist :(");
       return res.status(400).json({ error: "Product does not exist :(" });
     }
-    // Create new User
+    
     const product = await Product.findById(req.body.product_id);
     await product.remove();
     signale.complete(`Product of id ${id}, succefully Removed!`);

@@ -21,7 +21,7 @@ const [User, setUsers] = useState([]);
 const [showAddUser, setShowAddUser] = useState(false)
 const [showUpdateUser, setShowUpdateUser] = useState(false)
 
-const url = 'http://localhost:5500/api/allUsers';
+const url = '/api/allUsers';
 
 
 useEffect(() => {
@@ -52,7 +52,7 @@ const fetchUsers = () => {
 //delete a user
 const deleteUser= async (_id)=>{  
 
-    axios.delete("http://localhost:5500/api/deleteUser", {
+    axios.delete("/api/deleteUser", {
       headers: {
         'auth-token': localStorage.getItem('auth-token')
       },
@@ -72,7 +72,7 @@ const deleteUser= async (_id)=>{
 //Add Users
 const addUser = async (user) => {
   
-  const res = await fetch('http://localhost:5500/api/addUser', {
+  const res = await fetch('/api/addUser', {
     
     method: 'POST',
     mode: 'cors',

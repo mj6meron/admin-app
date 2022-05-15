@@ -49,7 +49,7 @@ export default function UpdateUser() {
     }
     console.log(updateDetails);
     axios
-      .patch("http://localhost:5500/api/updateUser", data, {
+      .patch("/api/updateUser", data, {
         headers: {
           'auth-token': localStorage.getItem('auth-token')
         }

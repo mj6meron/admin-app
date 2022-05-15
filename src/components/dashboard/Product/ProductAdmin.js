@@ -8,7 +8,7 @@ const ProductAdmin = () => {
     
 const [Product, setProducts] = useState([]);
 
-const url = 'http://localhost:5500/api/allProducts';
+const url = '/api/allProducts';
 
 
 useEffect(() => {

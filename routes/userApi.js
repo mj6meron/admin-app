@@ -8,6 +8,7 @@ const {
   removeUserValidation,
   updateUserValidation
 } = require("../database/controllers/validation");
+const Product = require("../database/models/Product");
 
 // LOGIN
 exports.login = async (req, res) => {
@@ -124,6 +125,12 @@ exports.deleteUser = async (req, res) => {
       .json({ errorMessage: `User of id ${id} not found!` });
   }
   try {
+
+ //   const product = await Product.find({owner_id: user._id});
+ //    Product.foreach(p=>p.remove())
+  //  await product.remove();
+
+
     await user.remove();
     signale.complete("User removed!");
     return res
