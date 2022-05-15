@@ -25,9 +25,6 @@ const [updatedUser, setUpdatedUser] = useState({
     });
     console.log(updatedUser);
   }
-  
-
-  
 
 
   return (

@@ -1,14 +1,16 @@
+import {useLocation} from 'react-router-dom';
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AccessDenied from '../accessDenied/AccessDenied';
 import axios from "axios";
-import {useLocation} from 'react-router-dom';
 export default function UpdateUser() {
   const location = useLocation();
   let navigate = useNavigate();
   let [email, setUsername] = useState("");
   let [password, setPassword] = useState("");
   let [isAdmin, setIsAdmin] = useState(false);
-  let [errorMessage, setErrorMessage] = useState("");
+  let [errorMessage, setErrorMessage] = useState("")
+
 
   let user = {
     user_id: location.state.user._id,
@@ -39,23 +41,31 @@ export default function UpdateUser() {
     if (!email && password && isAdmin){return {password, is_admin: handleIsAdmin(isAdmin)}}
 }
 
+
   function handleSubmit(event) {
     event.preventDefault();
     let updateDetails = prepareUpdate();
+
+    let data={
+      ...updateDetails,
+      user_id: user.user_id,
+    }
     console.log(updateDetails);
     axios
-      .patch("http://localhost:5500/api/updateUser", {
-        ...updateDetails,
-        user_id: user.user_id,
+      .patch("http://localhost:5500/api/updateUser", data, {
+        headers: {
+          'auth-token': localStorage.getItem('auth-token')
+        }
       })
       .then((response) => {
         console.log("here res -> ", response.data);
         localStorage.setItem("auth-token", response.data.token);
-        navigate(response.data.redirect);
+        
       })
       .catch(function (error) {
         setErrorMessage(error.response.data.error);
       });
+      navigate('/dashboard');
   }
 
   function updateUsername(event) {
@@ -80,6 +90,10 @@ export default function UpdateUser() {
  const handleBack =()=>{
    navigate('/dashboard')
  }
+
+  if (!localStorage.getItem('auth-token')){
+    return (<AccessDenied/>)
+  }
 
   return (
     <div className="loginBox">

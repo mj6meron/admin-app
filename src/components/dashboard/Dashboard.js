@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {useNavigate} from 'react-router-dom'
 import "./Dashboard.css";
+import AccessDenied from '../accessDenied/AccessDenied';
 
 
 import "./dash.css";
@@ -38,13 +39,13 @@ export default function Dashboard() {
     navigate('/')
     
   }
+  if (!localStorage.getItem('auth-token')){
+    return (<AccessDenied/>)
+  }
 
-  console.log('one render')
 
   return (
     <div className="dashboardBox">
-
-
 
       <div className="adminNavBar">
       <button className="barCell"  onClick={allProducts}>All Products</button>
