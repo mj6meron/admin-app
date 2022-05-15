@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {FaTimes, FaPen} from 'react-icons/fa'
 import AddUser from './AddUser';
-import UpdateUser from './UpdateUser';
 import Header from '../../layouts/Header';
+<<<<<<< Updated upstream
 import AppLayout from '../../layouts/AppLayout';
+=======
+import AccessDenied from '../../accessDenied/AccessDenied';
+>>>>>>> Stashed changes
 import './userStyle.scss'
 
 
@@ -95,10 +98,18 @@ function openUpdate(_id) {
     };
   });
 }
+<<<<<<< Updated upstream
 const updateUser = (_id) => {
   axios.put("/api/updateUser/" + _id, UpdateUser.updatedUser);
   alert("user updated");
   console.log(`item with id ${_id} updated`);
+=======
+
+if (!localStorage.getItem('auth-token')){
+  return(
+     <AccessDenied/>
+  )
+>>>>>>> Stashed changes
 }
 
 return (

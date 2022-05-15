@@ -9,7 +9,7 @@ const Header = ({title, onAdd}) => {
     <header className='header'>
         <h1 style ={headingStyle}>
             {title}
-        </h1>
+        </h1><br/>
      <Button color = 'green' text = 'Add User' onClick={onAdd}/>
     </header>
   )

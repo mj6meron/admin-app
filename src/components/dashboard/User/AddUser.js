@@ -1,11 +1,12 @@
 import {useState} from 'react'
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 const AddUser = ({onAdd}) => {
 const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
-//const [is_admin, setAdmin] = useState(false)
-
 
 const onSubmit = (e)=>{
     e.preventDefault()
@@ -18,7 +19,11 @@ const onSubmit = (e)=>{
     setPassword('')
 }
 
+<<<<<<< Updated upstream
   return (
+=======
+return (
+>>>>>>> Stashed changes
    <form className='add-form' onSubmit={onSubmit}>
 
        <div className='form-control'>

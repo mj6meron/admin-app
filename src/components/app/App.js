@@ -6,7 +6,12 @@ import Test from '../test/Test';
 import Dashboard from '../dashboard/Dashboard';
 import UserAdmin from '../dashboard/User/UserAdmin';
 import ProductAdmin from '../dashboard/Product/ProductAdmin';
+<<<<<<< Updated upstream
 import AppLayout from '../layouts/AppLayout';
+=======
+import UpdateUser from '../update/UpdateUser'
+import LogOut from '../logout/LogOut'
+>>>>>>> Stashed changes
 function App() {
   return (
     <div className="App">

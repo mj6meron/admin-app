@@ -50,7 +50,7 @@ return (
  
             <h4>Production:  {product.title}</h4>
             <p>Price:  {product.cost}</p>
-            <p style={{width: 280}}>Description: {product.description}</p>
+            <p>Description: {product.description}</p>
             
             <FaPen style={ {color:'green'} }/>
             <FaTimes style={ {color:'red'}}/>
