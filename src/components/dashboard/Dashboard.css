@@ -60,3 +60,15 @@ h1 {
     }
   }
   
+.table-intro {
+  border-width: 50%;
+  text-align: center;
+  padding: 125px;
+}
+.table-text{
+  padding-left: 30px;
+  padding-right: 40px;
+}
+.adminNavBar{
+  width: 50%;
+}

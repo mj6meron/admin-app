@@ -137,10 +137,9 @@ return (
             <h4>Email: {user.email}</h4><br/>
             <p style={{width: 'fit-content'}}>HashPass: {user.password}</p>
             <p style={{width: 'fit-content'}}>Time of Registration: {user.registration_date}</p>
+            <p style={{width: 'fit-content'}}>Admin Status: {String(user.is_admin)}</p>
             
             <FaPen style={ {color:'green'}} onClick={()=>openUpdate(user)}/>
-           
-            
             <FaTimes style={ {color:'red'}} onClick={() => deleteUser(user._id)}/>
           </div>
         ))}    
