@@ -149,6 +149,7 @@ exports.updateUser = async (req, res) => {
     signale.fatal("user update validation failed");
     return res.status(400).json({ error: error.details[0].message }); // The message is form the joi object in validation.js
   }
+  
 
 if (req.body.password){
       // Hash Password
@@ -156,13 +157,12 @@ if (req.body.password){
       const hashPssword = await bcrypt.hash(req.body.password, salt);
       req.body.password = hashPssword
 }
-
     const user = await User.findById(req.body.user_id)
     Object.assign(user, req.body)
     await user.save()
 
     signale.complete("Admin updated a user");
-    res.send({message: 'user updated!', data : user})
+    res.json({message: 'user updated!', data : user})
 } catch (error) {
   console.log('here is the errrorrrr -> ', error)
     signale.fatal("Something went wrong!");

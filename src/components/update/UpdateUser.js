@@ -58,14 +58,12 @@ export default function UpdateUser() {
         }
       })
       .then((response) => {
-        console.log("here res -> ", response.data);
-        localStorage.setItem("auth-token", response.data.token);
-        
+        console.log("here res -> ", response.data)
       })
       .catch(function (error) {
-        setErrorMessage(error.response.data.error);
+        setErrorMessage(error.response.data.error)
       });
-      navigate('/dashboard');
+      if(!errorMessage){navigate('/dashboard')}
   }
 
   function updateUsername(event) {
@@ -110,7 +108,7 @@ export default function UpdateUser() {
           <p className="labelP"> Email - </p>
           <input
             className="inputLogin"
-            type="text"
+            type="email"
             placeholder={user.email}
             onChange={updateUsername}
           />
@@ -120,6 +118,7 @@ export default function UpdateUser() {
           <input
             className="inputLogin"
             type="password"
+            minlength="5"
             placeholder={user.password}
             onChange={updatePassword}
           />
