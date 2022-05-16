@@ -56,10 +56,12 @@ export default function UpdateUser() {
       })
       .then((response) => {
         console.log("here res -> ", response.data)
+        navigate('/dashboard')
       })
       .catch(function (error) {
         setErrorMessage(error.response.data.error)
       })
+
   }
 
   function updateUsername(event) {
