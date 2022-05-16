@@ -9,11 +9,11 @@ export default function Login() {
   let [password, setPassword] = useState("");
   let [errorMessage, setErrorMessage] = useState("");
 
-  function handleSubmit(event) {
+  const handleSubmit=async (event)=> {
     event.preventDefault();
     console.log("token check", localStorage.getItem("auth"));
     console.log(`Here is the email: ${email}, and password: ${password}`);
-    axios
+    await axios
       .post("/api/login", {
         email: email,
         password: password,
