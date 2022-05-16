@@ -25,8 +25,7 @@ export default function Login() {
       })
       .catch(function (error) {
         setErrorMessage(error.response.data.error);
-      });
-    if (!errorMessage){navigate('/dashboard')}
+      })
   }
 
   function updateEmail(event) {
