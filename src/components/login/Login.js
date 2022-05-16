@@ -20,8 +20,7 @@ export default function Login() {
       })
       .then((response) => {
         console.log("here res -> ", response.data);
-        localStorage.setItem("auth-token", response.data.token);
-        navigate(response.data.redirect);
+        localStorage.setItem("auth-token", response.data.token)
       })
       .catch(function (error) {
         setErrorMessage(error.response.data.error);
