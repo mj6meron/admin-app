@@ -21,11 +21,11 @@ export default function Login() {
       .then((response) => {
         console.log("here res -> ", response.data);
         localStorage.setItem("auth-token", response.data.token)
+        navigate('/dashboard')
       })
       .catch(function (error) {
         setErrorMessage(error.response.data.error);
-      });
-    if (!errorMessage){navigate('/dashboard')}
+      })
   }
 
   function updateEmail(event) {
