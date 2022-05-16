@@ -59,8 +59,7 @@ export default function UpdateUser() {
       })
       .catch(function (error) {
         setErrorMessage(error.response.data.error)
-      });
-      if(!errorMessage){navigate('/dashboard')}
+      })
   }
 
   function updateUsername(event) {
