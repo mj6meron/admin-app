@@ -29,12 +29,12 @@ connectDatabase();
 
 
 // MIDDLEWARES
-app.use(express.static('build'))
 app.use(express.json());
 
 //  -  ROUTES  -
 app.use('/api', api);
 
+app.use(express.static('build'))
 
 app.listen(PORT, ()=>{
     signale.success(`Server is running on port: ${PORT}`)
