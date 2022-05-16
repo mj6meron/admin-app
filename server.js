@@ -3,6 +3,7 @@ const signale = require('signale')
 const dotenv = require('dotenv')
 var cors = require('cors')
 const api = require('./routes/api')
+const path = require('path')
 
 
 const connectDatabase = require('./database/controllers/connectDB');
@@ -34,7 +35,23 @@ app.use(express.json());
 //  -  ROUTES  -
 app.use('/api', api);
 
-app.use(express.static('build'))
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('build'));
+  
+    app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+    });
+  } else {
+    app.use('/', express.static(path.join(__dirname, 'public')));
+  
+    app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+    });
+  }
+
+
+
 
 app.listen(PORT, ()=>{
     signale.success(`Server is running on port: ${PORT}`)
